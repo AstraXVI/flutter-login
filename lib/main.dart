@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        cardColor: Colors.white,
         textTheme: const TextTheme(
           displaySmall: TextStyle(
             fontFamily: 'OpenSans',
