@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           secondary: Colors.white, // Your accent color
         ),
       ),
-      home: const SignupPage(),
+      home: const SignInPage2(),
     );
   }
 }
@@ -84,14 +84,14 @@ class _Logo extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Text(
-            "Welcome to Flutter!",
+            "Login",
             textAlign: TextAlign.center,
             style: isSmallScreen
-                ? Theme.of(context).textTheme.headlineSmall
+                ? Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold)
                 : Theme.of(context)
                     .textTheme
-                    .headlineMedium
-                    ?.copyWith(color: Colors.black),
+                    .headlineLarge
+                    ?.copyWith(color: Colors.black, fontWeight: FontWeight.bold),
           ),
         )
       ],
@@ -244,7 +244,7 @@ class __FormContentState extends State<_FormContent> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: const Text('Register Successfully'),
+                                title: const Text('Login Successfully'),
                                 content:
                                     const Text("redirecting to Home Page!"),
                                 actions: <Widget>[
@@ -287,13 +287,18 @@ class __FormContentState extends State<_FormContent> {
                 const Text("Don't have an account?"),
                 TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const SignupPage(),
-                      ));
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.rightToLeft,
+                          child: const SignupPage(),
+                        ),
+                      );
                     },
                     child: const Text(
                       "Sign up",
-                      style: TextStyle(color: Colors.purple),
+                      style: TextStyle(color: Colors.purple, ),
+
                     ))
               ],
             )

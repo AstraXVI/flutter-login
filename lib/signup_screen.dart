@@ -195,7 +195,7 @@ class __FormContentState extends State<_FormContent> {
                   return 'Please enter some text';
                 }
 
-                if (_passwordController.text ==
+                if (_passwordController.text !=
                     _confirmPasswordController.text) {
                   return 'Password not match!';
                 }
@@ -219,20 +219,6 @@ class __FormContentState extends State<_FormContent> {
                   )),
             ),
             _gap(),
-            CheckboxListTile(
-              value: _rememberMe,
-              onChanged: (value) {
-                if (value == null) return;
-                setState(() {
-                  _rememberMe = value;
-                });
-              },
-              title: const Text('Remember me'),
-              controlAffinity: ListTileControlAffinity.leading,
-              dense: true,
-              contentPadding: const EdgeInsets.all(0),
-            ),
-            _gap(),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -243,7 +229,7 @@ class __FormContentState extends State<_FormContent> {
                 child: const Padding(
                   padding: EdgeInsets.all(10.0),
                   child: Text(
-                    'Sign in',
+                    'Sign up',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -252,7 +238,8 @@ class __FormContentState extends State<_FormContent> {
                     String uname = _usernameController.text;
                     String email = _emailController.text;
                     String password = _passwordController.text;
-                    const url = 'http://192.168.1.136:8012/flutterBE/insert.php';
+                    const url =
+                        'http://192.168.1.136:8012/flutterBE/insert.php';
                     try {
                       final response = await http.post(
                         Uri.parse(url),
@@ -275,27 +262,30 @@ class __FormContentState extends State<_FormContent> {
                             content: Text(responseData['message']),
                           ));
                         } else {
-                          // showDialog(
-                          //   context: context,
-                          //   builder: (BuildContext context) {
-                          //     return AlertDialog(
-                          //       title: const Text('Register Successfully'),
-                          //       content:
-                          //           const Text("redirecting to Home Page!"),
-                          //       actions: <Widget>[
-                          //         TextButton(
-                          //           onPressed: () {
-                          //             Navigator.of(context)
-                          //                 .pushReplacement(MaterialPageRoute(
-                          //               builder: (context) => const HomePage(),
-                          //             ));
-                          //           },
-                          //           child: const Text('OK'),
-                          //         ),
-                          //       ],
-                          //     );
-                          //   },
-                          // );
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Register Successfully'),
+                                content:
+                                    const Text("redirecting to Login Page!"),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          type: PageTransitionType.leftToRight,
+                                          child: const SignInPage2(),
+                                        ),
+                                      );
+                                    },
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
                         }
                       } else {
                         // Handle error
@@ -322,9 +312,13 @@ class __FormContentState extends State<_FormContent> {
                 const Text("Have an account?"),
                 TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const SignInPage2(),
-                      ));
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.leftToRight,
+                          child: const SignInPage2(),
+                        ),
+                      );
                     },
                     child: const Text(
                       "Login",

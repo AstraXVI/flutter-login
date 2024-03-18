@@ -86,6 +86,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_icon_snackbar:
+    dependency: "direct main"
+    description:
+      name: flutter_icon_snackbar
+      sha256: b959b871a2123f5d86681837854f00a54a8210e07bd7c86975323314e5777146
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.6"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -136,6 +144,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  icon_animated:
+    dependency: transitive
+    description:
+      name: icon_animated
+      sha256: "0847039648c98e53ac9be16cac170c025461caeb4d890cf4f88c78578ef9e7aa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.1"
   intl_phone_number_input:
     dependency: transitive
     description:
